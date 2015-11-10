@@ -1,28 +1,15 @@
 == README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To get up and running, create a <tt>config/secrets.yml</tt> file containing your
+S3 bucket/keys:
+development:
+  secret_key_base: xxx
+  s3_access_key_id: xxx
+  s3_secret: xxx
+  s3_bucket: xxx
+  s3_region: xxx
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Test out the api with something like this:
+<tt>
+curl -F "picture[title]=mountain" -F "picture[image]=@../Pictures/panorama.jpg;type=image/jpeg" http://0.0.0.0:3000/api/v1/pictures
+</tt>
