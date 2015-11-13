@@ -11,8 +11,10 @@ class Api::V1::PicturesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
+  test "should post create" do
+
+    @image = fixture_file_upload('files/panorama.jpg', 'image/jpeg')
+    post :create, :picture => { :image => @image }
     assert_response :success
   end
 
