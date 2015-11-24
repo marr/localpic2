@@ -17,7 +17,6 @@ gem 'refile-mini_magick'
 gem 'refile-s3'
 
 gem 'aws-sdk'
-gem 'aws-sdk-v1'
 
 gem 'sidekiq'
 gem 'ohm'

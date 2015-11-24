@@ -1,4 +1,3 @@
-require 'aws-sdk-v1'
 require "refile/s3"
 
 aws = {
