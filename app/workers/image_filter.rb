@@ -1,6 +1,4 @@
 class ImageFilter < ServiceWorker
-  require 'pry'
-  
   sidekiq_options queue: :low
 
   sidekiq_options retry: 5
@@ -11,24 +9,13 @@ class ImageFilter < ServiceWorker
                   #{msg['error_message']}"
   end
 
-  def perform(options = {})
-    setup_options_as_instance_variables(options)
-    logger.info "[id=#{@id}] FilterImages work started."
-    process_filter
-    perform_callbacks("filters/#{@id}")
+  def perform(id)
+    logger.info "[id=#{id}] FilterImages work started."
+    pic = Picture.find(id)
+    file = pic.image.to_io
+    image = MiniMagick::Image.new(file.path)
+    image.sepia_tone "80%"
+    pic.image = file
+    pic.save
   end
-
-  private
-
-    def process_filter
-      MiniMagick.configure do |config|
-        config.debug = true
-      end
-      MiniMagick::Tool::Convert.new do |builder|
-        #builder << '-list command'
-        builder << @image
-        builder.merge! ["-sepia-tone", "80%"]
-        builder << @image
-      end
-    end
 end
