@@ -22,3 +22,4 @@ gem 'sidekiq'
 gem 'ohm'
 gem 'ohm-contrib'
 
+gem 'pry', :group => :development
