@@ -27,7 +27,7 @@ class ImageFilter < ServiceWorker
       MiniMagick::Tool::Convert.new do |builder|
         #builder << '-list command'
         builder << @image
-        builder << "-sepia-tone 80%"
+        builder.merge! ["-sepia-tone", "80%"]
         builder << @image
       end
     end
