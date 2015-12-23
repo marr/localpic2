@@ -13,3 +13,8 @@ Test out the api with something like this:
 <tt>
 curl -F "picture[title]=mountain" -F "picture[image]=@../Pictures/panorama.jpg;type=image/jpeg" http://0.0.0.0:3000/api/v1/pictures
 </tt>
+
+To Generate an integration test run:
+<tt>
+rails g integration_test todo
+</tt>

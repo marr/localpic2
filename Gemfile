@@ -22,4 +22,7 @@ gem 'sidekiq'
 gem 'ohm'
 gem 'ohm-contrib'
 
-gem 'pry', :group => :development
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails'
+end
