@@ -1,5 +1,5 @@
 == localpic example from RESTful Rails Development
-{<img src="https://img.shields.io/travis/marr/localpic2.svg" alt="build status">}[]
+<img src="https://img.shields.io/travis/marr/localpic2.svg" alt="build status">
 To get up and running, create a <tt>config/secrets.yml</tt> file containing your
 S3 bucket/keys:
 development:
