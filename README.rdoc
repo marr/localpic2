@@ -1,14 +1,16 @@
 == localpic example from RESTful Rails Development
 {<img src="https://travis-ci.org/marr/localpic2.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/marr/localpic2]
+
 To get up and running, create a <tt>config/secrets.yml</tt> file containing your
 S3 bucket/keys:
+<tt>
 development:
   secret_key_base: xxx
   s3_access_key_id: xxx
   s3_secret: xxx
   s3_bucket: xxx
   s3_region: xxx
-
+</tt>
 
 Test out the api with something like this:
 <tt>
