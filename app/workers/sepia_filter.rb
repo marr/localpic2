@@ -1,9 +1,8 @@
-class ImageFilter < ServiceWorker
+class SepiaFilter < ServiceWorker
   sidekiq_options queue: :low
-
   sidekiq_options retry: 5
-  sidekiq_retry_in { 3.minutes }
 
+  sidekiq_retry_in { 3.minutes }
   sidekiq_retries_exhausted do |msg|
     logger.error "[worker][filter] Failed #{msg['class']} with #{msg['args']}:
                   #{msg['error_message']}"
@@ -13,6 +12,7 @@ class ImageFilter < ServiceWorker
     logger.info "[id=#{id}] FilterImages work started."
     pic = Picture.find(id)
     file = pic.image.to_io
+    file.close
     image = MiniMagick::Image.new(file.path)
     image.sepia_tone "80%"
     pic.image = file

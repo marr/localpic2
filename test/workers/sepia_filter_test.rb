@@ -3,7 +3,7 @@ require "benchmark"
 require 'sidekiq/testing'
 
 
-class ImageFilterTest < ActiveSupport::TestCase
+class SepiaFilterTest < ActiveSupport::TestCase
   setup do
     image_path = "#{Rails.root}/test/fixtures/files/panorama.jpg"
     @picture = Picture.new
@@ -13,12 +13,11 @@ class ImageFilterTest < ActiveSupport::TestCase
     @picture.save
   end
 
-  test 'image_filter_worker' do
-    updated_at = @picture.updated_at
+  test 'sepia_filter_worker' do
     Sidekiq::Testing.inline! do
-      ImageFilter.perform_async(@picture.id)
+      SepiaFilter.perform_async(@picture.id)
     end
-    assert_not_equal @picture.updated_at, updated_at
+    assert_not_equal @picture.updated_at, @picture.created_at
   end
 
   #test 'apply_filter_to_image' do
@@ -26,3 +25,4 @@ class ImageFilterTest < ActiveSupport::TestCase
   #end
 
 end
+

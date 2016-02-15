@@ -51,6 +51,7 @@ GEM
     aws-sdk-resources (2.2.8)
       aws-sdk-core (= 2.2.8)
     builder (3.2.2)
+    byebug (8.2.2)
     coderay (1.1.0)
     concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
@@ -92,6 +93,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -202,7 +206,7 @@ DEPENDENCIES
   ohm
   ohm-contrib
   pg
-  pry
+  pry-byebug
   rails (= 4.2.4)
   rails-api
   refile
