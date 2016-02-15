@@ -15,7 +15,8 @@ class SepiaFilterTest < ActiveSupport::TestCase
 
   test 'sepia_filter_worker' do
     Sidekiq::Testing.inline! do
-      SepiaFilter.perform_async(@picture.id)
+      #binding.pry # outputs full picture representation
+      SepiaFilter.perform_async(@picture.image_id, @picture)
     end
     assert_not_equal @picture.updated_at, @picture.created_at
   end

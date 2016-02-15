@@ -8,10 +8,11 @@ class SepiaFilter < ServiceWorker
                   #{msg['error_message']}"
   end
 
-  def perform(id)
+  def perform(id, pic)
+    binding.pry # shows picture as just a string "=> #<Picture:0x007fccab0b7bb8"
     logger.info "[id=#{id}] FilterImages work started."
-    pic = Picture.find(id)
-    file = pic.image.to_io
+    #pic = Picture.find(id)
+    file = pic.image.to_io #NoMethodError: undefined method `image' for "#<Picture:0x007f8bf765b6e0>":String
     file.close
     image = MiniMagick::Image.new(file.path)
     image.sepia_tone "80%"
